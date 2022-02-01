@@ -38,7 +38,7 @@ var threeSum = function(nums) {
   const results = []
 
   let i = 0;
-  for (let i = 0; i < nums.length - 2; i++) {
+  while (i < nums.length - 2 && nums[i] <= 0) {
 
     let j = i + 1
     let k = nums.length - 1
@@ -59,6 +59,7 @@ var threeSum = function(nums) {
         k = nums.length - 1
       }
     }
+    i++
   }
   set.forEach(arr => results.push(JSON.parse(arr)))
   return results
