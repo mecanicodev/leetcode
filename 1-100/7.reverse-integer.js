@@ -29,13 +29,11 @@ var reverse = function(x) {
   
   if (x > -10 && x < 10) return x
 
-  
   const sign = x < 0 ? -1 : 1
   x = Math.abs(x)
   let reversedStr = x.toString().split('').reverse().join('')
-  reversedStr.replace(/^[0]+/, '')
   
-  let reversedNumber = +reversedStr * sign
+  let reversedNumber = +reversedStr.replace(/^[0]+/, '') * sign
 
   const limit = Math.pow(2, 31)
   if (reversedNumber < -limit || reversedNumber > limit - 1) return 0
@@ -43,13 +41,14 @@ var reverse = function(x) {
   return reversedNumber 
 };
 
-// console.log(reverse(120))
-console.log(reverse(1534236469))
+console.log(reverse(120))
+//console.log(reverse(1534236469))
 
 
 
 /*
-Runtime: 117 ms, faster than 42.53% of JavaScript online submissions for Reverse Integer.
-Memory Usage: 44.3 MB, less than 5.63% of JavaScript online submissions for Reverse Integer.
+
+Runtime: 81 ms, faster than 90.32% of JavaScript online submissions for Reverse Integer.
+Memory Usage: 44 MB, less than 7.66% of JavaScript online submissions for Reverse Integer.
 
 */
