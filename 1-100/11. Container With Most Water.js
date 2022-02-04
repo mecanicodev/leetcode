@@ -34,34 +34,19 @@ n == height.length
 
 
 var maxArea = function(height) {
-  
-  function Pointer(position, direction) {
-    return {
-      position: position,
-      get value() { return height[this.position] },
-      move() { this.position = this.position + direction }
+  let i = 0, j = height.length - 1, area = 0, maxArea = 0
+  while (i < j) {
+    if (height[i] < height[j]) {
+      area = height[i] * (j -i)
+      i++
+    } else {
+      area = height[j] * (j -i)
+      j--
     }
+    maxArea = Math.max(maxArea, area)
   }
-
-  const i = new Pointer(0, 1)
-  const j = new Pointer(height.length - 1, -1)
-  
-  let min
-  const setMin = () => min = i.value <= j.value ? i : j 
-  
-  setMin()
-  
-  const areaBetween = (i, j) => Math.min(height[i], height[j]) * (j - i)
-
-  let area = areaBetween(i.position, j.position)
-
-  while (i.position < height.length - 2 && i.position < j.position) {
-    min.move()
-    setMin()
-    area = Math.max(area, areaBetween(i.position, j.position))  
-  }
-  return area
-};
+  return maxArea
+}
 
 // Test cases
 //[1, 2, 1]
@@ -69,9 +54,10 @@ var maxArea = function(height) {
 // [2,3,4,5,18,17,6]
 // [1,8,6,2,5,4,8,3,7]
 // [10,9,8,7,6,5,4,3,2,1]
+//console.log(maxArea([1,8,6,2,5,4,8,3,7]))
 
-// TODO Optimize
+
 /*
-Runtime: 217 ms, faster than 6.42% of JavaScript online submissions for Container With Most Water.
-Memory Usage: 51.3 MB, less than 5.18% of JavaScript online submissions for Container With Most Water.
+Runtime: 97 ms, faster than 60.54% of JavaScript online submissions for Container With Most Water.
+Memory Usage: 49.9 MB, less than 7.15% of JavaScript online submissions for Container With Most Water.
 */
