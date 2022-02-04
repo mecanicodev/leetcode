@@ -36,7 +36,7 @@ var threeSumClosest = function(nums, target) {
   let i = 0
   let sum, closest
   for (let i = 0; i < nums.length - 2; i++) {
-    let j = i + 1, k = nums.length - 1
+    let j = i + 1, k = nums.length - 1, hasLower = false
     while (j < nums.length - 1 && j < k) {
       sum = nums[i] + nums[j] + nums[k]
       closest = Math.abs(closest - target) < Math.abs(sum - target) ? closest : sum
@@ -48,6 +48,6 @@ var threeSumClosest = function(nums, target) {
 
 
 /*
-Runtime: 101 ms, faster than 60.33% of JavaScript online submissions for 3Sum Closest.
-Memory Usage: 42.3 MB, less than 18.15% of JavaScript online submissions for 3Sum Closest.
+Runtime: 76 ms, faster than 95.21% of JavaScript online submissions for 3Sum Closest.
+Memory Usage: 42.9 MB, less than 11.69% of JavaScript online submissions for 3Sum Closest.
 */
